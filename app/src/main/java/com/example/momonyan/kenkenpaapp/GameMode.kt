@@ -30,23 +30,29 @@ class GameMode : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
-        restNumText.text = getString(R.string.rest,numSet + 1)
+        restNumText.text = getString(R.string.rest, numSet + 1)
+
+        when (randomInt) {
+            0 -> image.setImageResource(R.drawable.fabric_mark_circle)
+            1 -> image.setImageResource(R.drawable.fabric_mark_triangle)
+            2 -> image.setImageResource(R.drawable.roman_number10)
+        }
 
         buttonL.setOnClickListener {
             if (0 == randomInt && 0 != numSet) {
                 val nextStageIntent = Intent(this, GameMode::class.java)
                 numSet--
-                nextStageIntent.putExtra("num",numSet)
-                nextStageIntent.putExtra("time",startTime)
+                nextStageIntent.putExtra("num", numSet)
+                nextStageIntent.putExtra("time", startTime)
                 startActivity(nextStageIntent)
                 finish()
-            }else if (0 == randomInt && 0 != numSet){
-                val finishIntent = Intent(this,EndActivity::class.java)
-                finishIntent.putExtra("time",startTime)
-                finishIntent.putExtra("endTime",Calendar.getInstance().timeInMillis)
+            } else if (0 == randomInt && 0 != numSet) {
+                val finishIntent = Intent(this, EndActivity::class.java)
+                finishIntent.putExtra("time", startTime)
+                finishIntent.putExtra("endTime", Calendar.getInstance().timeInMillis)
                 startActivity(finishIntent)
                 finish()
-            }else{
+            } else {
 
             }
         }
@@ -54,17 +60,17 @@ class GameMode : AppCompatActivity() {
             if (1 == randomInt && 0 != numSet) {
                 val nextStageIntent = Intent(this, GameMode::class.java)
                 numSet--
-                nextStageIntent.putExtra("num",numSet)
-                nextStageIntent.putExtra("time",startTime)
+                nextStageIntent.putExtra("num", numSet)
+                nextStageIntent.putExtra("time", startTime)
                 startActivity(nextStageIntent)
                 finish()
-            }else if (1 == randomInt && 0 != numSet){
-                val finishIntent = Intent(this,EndActivity::class.java)
-                finishIntent.putExtra("time",startTime)
-                finishIntent.putExtra("endTime",Calendar.getInstance().timeInMillis)
+            } else if (1 == randomInt && 0 != numSet) {
+                val finishIntent = Intent(this, EndActivity::class.java)
+                finishIntent.putExtra("time", startTime)
+                finishIntent.putExtra("endTime", Calendar.getInstance().timeInMillis)
                 startActivity(finishIntent)
                 finish()
-            }else{
+            } else {
 
             }
         }
@@ -72,17 +78,17 @@ class GameMode : AppCompatActivity() {
             if (2 == randomInt && 0 != numSet) {
                 val nextStageIntent = Intent(this, GameMode::class.java)
                 numSet--
-                nextStageIntent.putExtra("num",numSet)
-                nextStageIntent.putExtra("time",startTime)
+                nextStageIntent.putExtra("num", numSet)
+                nextStageIntent.putExtra("time", startTime)
                 startActivity(nextStageIntent)
                 finish()
-            }else if (2 == randomInt && 0 != numSet){
-                val finishIntent = Intent(this,EndActivity::class.java)
-                finishIntent.putExtra("time",startTime)
-                finishIntent.putExtra("endTime",Calendar.getInstance().timeInMillis)
+            } else if (2 == randomInt && 0 != numSet) {
+                val finishIntent = Intent(this, EndActivity::class.java)
+                finishIntent.putExtra("time", startTime)
+                finishIntent.putExtra("endTime", Calendar.getInstance().timeInMillis)
                 startActivity(finishIntent)
                 finish()
-            }else{
+            } else {
 
             }
         }
