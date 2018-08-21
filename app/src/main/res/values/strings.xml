@@ -6,5 +6,6 @@
     <string name="choice2">△</string>
     <string name="choice3">×</string>
     <string name="rest">残り%d</string>
+    <string name="score">Score : %d</string>
 
 </resources>
