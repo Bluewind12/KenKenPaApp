@@ -1,7 +1,6 @@
 package com.example.momonyan.kenkenpaapp
 
 import android.content.Intent
-import android.media.AudioManager
 import android.media.SoundPool
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -11,7 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import java.util.*
 
-class GameMode : AppCompatActivity() {
+class GameModeActivity : AppCompatActivity() {
     private lateinit var image: ImageView
     private lateinit var buttonL: Button
     private lateinit var buttonC: Button
@@ -53,13 +52,13 @@ class GameMode : AppCompatActivity() {
                 soundPool.play(success, 1.0f, 1.0f, 0, 0, 1.0f)
 
                 //画面遷移
-                val nextStageIntent = Intent(this, GameMode::class.java)
+                val nextStageIntent = Intent(this, GameModeActivity::class.java)
                 numSet--
                 nextStageIntent.putExtra("num", numSet)
                 nextStageIntent.putExtra("time", startTime)
                 startActivity(nextStageIntent)
                 finish()
-            } else if (0 == randomInt && 0 != numSet) {
+            } else if (0 == randomInt && 0 == numSet) {
                 //効果音
                 soundPool.play(success, 1.0f, 1.0f, 0, 0, 1.0f)
 
@@ -80,13 +79,13 @@ class GameMode : AppCompatActivity() {
                 soundPool.play(success, 1.0f, 1.0f, 0, 0, 1.0f)
 
                 //画面遷移
-                val nextStageIntent = Intent(this, GameMode::class.java)
+                val nextStageIntent = Intent(this, GameModeActivity::class.java)
                 numSet--
                 nextStageIntent.putExtra("num", numSet)
                 nextStageIntent.putExtra("time", startTime)
                 startActivity(nextStageIntent)
                 finish()
-            } else if (1 == randomInt && 0 != numSet) {
+            } else if (1 == randomInt && 0 == numSet) {
                 //効果音
                 soundPool.play(success, 1.0f, 1.0f, 0, 0, 1.0f)
                 //画面遷移
@@ -105,13 +104,13 @@ class GameMode : AppCompatActivity() {
                 //効果音
                 soundPool.play(success, 1.0f, 1.0f, 0, 0, 1.0f)
                 //画面遷移
-                val nextStageIntent = Intent(this, GameMode::class.java)
+                val nextStageIntent = Intent(this, GameModeActivity::class.java)
                 numSet--
                 nextStageIntent.putExtra("num", numSet)
                 nextStageIntent.putExtra("time", startTime)
                 startActivity(nextStageIntent)
                 finish()
-            } else if (2 == randomInt && 0 != numSet) {
+            } else if (2 == randomInt && 0 == numSet) {
                 //効果音
                 soundPool.play(success, 1.0f, 1.0f, 0, 0, 1.0f)
 
@@ -137,7 +136,7 @@ class GameMode : AppCompatActivity() {
 
         randomInt = random.nextInt(3)
         Log.d("RandomInt", randomInt.toString())
-        numSet = intent.getIntExtra("num", 9)
+        numSet = intent.getIntExtra("num", 10)
         startTime = intent.getLongExtra("time", Calendar.getInstance().timeInMillis)
 
         soundPool = SoundPool.Builder().build()
