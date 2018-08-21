@@ -11,7 +11,6 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var startButton: Button
-    private lateinit var testButton: Button
     private lateinit var highScoreText: TextView
 
     private lateinit var cal: Calendar
@@ -28,7 +27,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun init() {
         startButton = findViewById(R.id.startButton1)
-        testButton = findViewById(R.id.testButton)
         highScoreText = findViewById(R.id.highScoreTextView)
     }
 }
