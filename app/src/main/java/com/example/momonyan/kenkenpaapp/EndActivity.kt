@@ -17,6 +17,7 @@ class EndActivity : AppCompatActivity() {
     private lateinit var editor: SharedPreferences.Editor
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.end_point)
         init()
         setScore()
         scoreText.text = getString(R.string.score, score)

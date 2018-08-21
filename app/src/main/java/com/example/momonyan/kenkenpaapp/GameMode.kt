@@ -37,6 +37,7 @@ class GameMode : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.game_layout)
         init()
         restNumText.text = getString(R.string.rest, numSet + 1)
 

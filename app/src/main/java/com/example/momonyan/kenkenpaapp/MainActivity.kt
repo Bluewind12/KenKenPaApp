@@ -9,15 +9,15 @@ import android.widget.TextView
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var startButton: Button
     private lateinit var highScoreText: TextView
 
-    private lateinit var cal: Calendar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         init()
+
         startButton.setOnClickListener {
             val intent = Intent(this,GameMode::class.java)
             startActivity(intent)
