@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".GameModeActivity"
+            android:label="ゲーム画面" />
+        <activity
+            android:name=".EndActivity"
+            android:label="おわり" />
     </application>
 
 </manifest>
