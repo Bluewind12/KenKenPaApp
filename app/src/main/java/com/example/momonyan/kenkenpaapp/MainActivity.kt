@@ -1,16 +1,17 @@
 package com.example.momonyan.kenkenpaapp
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var startButton: Button
     private lateinit var highScoreText: TextView
+    private lateinit var data: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,9 +19,12 @@ class MainActivity : AppCompatActivity() {
 
         init()
 
+        highScoreText.text = getString(R.string.highScore,data.getLong("score",999))
         startButton.setOnClickListener {
-            val intent = Intent(this,GameMode::class.java)
+            val intent = Intent(this, GameModeActivity::class.java)
+            intent.putExtra("num", 10)
             startActivity(intent)
+
         }
 
     }
@@ -28,5 +32,7 @@ class MainActivity : AppCompatActivity() {
     private fun init() {
         startButton = findViewById(R.id.startButton1)
         highScoreText = findViewById(R.id.highScoreTextView)
+        data = getSharedPreferences("ScoreTable", Context.MODE_PRIVATE)
+
     }
 }
