@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import java.util.*
 
-class GameModeActivity : AppCompatActivity() {
+class TimeAttackModeActivity : AppCompatActivity() {
     private lateinit var image: ImageView
     private lateinit var buttonL: Button
     private lateinit var buttonC: Button
@@ -44,7 +44,7 @@ class GameModeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.game_layout)
+        setContentView(R.layout.time_attack_game_layout)
         init()
         restNumText.text = getString(R.string.rest, numSet + 1)
 
@@ -151,7 +151,7 @@ class GameModeActivity : AppCompatActivity() {
         //効果音
         soundPool.play(success, 1.0f, 1.0f, 0, 0, 1.0f)
         //画面遷移
-        val nextStageIntent = Intent(this, GameModeActivity::class.java)
+        val nextStageIntent = Intent(this, TimeAttackModeActivity::class.java)
         numSet--
         nextStageIntent.putExtra("num", numSet)
         nextStageIntent.putExtra("time", startTime)
