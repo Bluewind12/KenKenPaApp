@@ -10,6 +10,7 @@ import android.widget.TextView
 
 class EndActivity : AppCompatActivity() {
     private lateinit var scoreText: TextView
+    private lateinit var resultView: TextView
     private lateinit var backButton: Button
     private var score: Long = 0
     private var penalty: Int = 0
@@ -21,7 +22,8 @@ class EndActivity : AppCompatActivity() {
         setContentView(R.layout.end_point)
         init()
         setScore()
-        scoreText.text = getString(R.string.score, score, penalty, scorePenaltyAdd)
+        scoreText.text = getString(R.string.score, score, penalty)
+        resultView.text = getString(R.string.scoreResult, scorePenaltyAdd)
         backButton.setOnClickListener {
             val endIntent = Intent(this, MainActivity::class.java)
             startActivity(endIntent)
@@ -31,6 +33,7 @@ class EndActivity : AppCompatActivity() {
 
     private fun init() {
         scoreText = findViewById(R.id.scoreText)
+        resultView = findViewById(R.id.resultView)
         backButton = findViewById(R.id.homeBackButton)
         penalty = intent.getIntExtra("penalty", 0)
         score = (intent.getLongExtra("endTime", 0) - intent.getLongExtra("time", 999999)) / 1000
@@ -41,7 +44,7 @@ class EndActivity : AppCompatActivity() {
 
     private fun setScore() {
         if (score < data.getLong("score", Long.MAX_VALUE)) {
-            editor.putLong("score", score)
+            editor.putLong("score", scorePenaltyAdd)
             editor.apply()
         }
     }
