@@ -4,7 +4,6 @@ import android.content.Intent
 import android.media.SoundPool
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -39,6 +38,9 @@ class GameModeActivity : AppCompatActivity() {
     private var centerChoice: Int = 0
     private var rightChoice: Int = 0
 
+    //不正解回数
+    private var penaltyInt: Int = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,88 +57,18 @@ class GameModeActivity : AppCompatActivity() {
         choiceNumPoint()
 
         //ボタンテキスト設定
-        buttonTextChange(buttonL,leftChoice)
-        buttonTextChange(buttonC,centerChoice)
-        buttonTextChange(buttonR,rightChoice)
+        buttonTextChange(buttonL, leftChoice)
+        buttonTextChange(buttonC, centerChoice)
+        buttonTextChange(buttonR, rightChoice)
 
         buttonL.setOnClickListener {
-            if (leftChoice == randomImageInt && 0 != numSet) {
-                //効果音
-                soundPool.play(success, 1.0f, 1.0f, 0, 0, 1.0f)
-
-                //画面遷移
-                val nextStageIntent = Intent(this, GameModeActivity::class.java)
-                numSet--
-                nextStageIntent.putExtra("num", numSet)
-                nextStageIntent.putExtra("time", startTime)
-                startActivity(nextStageIntent)
-                finish()
-            } else if (leftChoice == randomImageInt && 0 == numSet) {
-                //効果音
-                soundPool.play(success, 1.0f, 1.0f, 0, 0, 1.0f)
-
-                //画面遷移
-                val finishIntent = Intent(this, EndActivity::class.java)
-                finishIntent.putExtra("time", startTime)
-                finishIntent.putExtra("endTime", Calendar.getInstance().timeInMillis)
-                startActivity(finishIntent)
-                finish()
-            } else {
-                //効果音
-                soundPool.play(beep, 1.0f, 1.0f, 0, 0, 1.0f)
-            }
+            correctDecision(leftChoice)
         }
         buttonC.setOnClickListener {
-            if (centerChoice == randomImageInt && 0 != numSet) {
-                //効果音
-                soundPool.play(success, 1.0f, 1.0f, 0, 0, 1.0f)
-
-                //画面遷移
-                val nextStageIntent = Intent(this, GameModeActivity::class.java)
-                numSet--
-                nextStageIntent.putExtra("num", numSet)
-                nextStageIntent.putExtra("time", startTime)
-                startActivity(nextStageIntent)
-                finish()
-            } else if (centerChoice == randomImageInt && 0 == numSet) {
-                //効果音
-                soundPool.play(success, 1.0f, 1.0f, 0, 0, 1.0f)
-                //画面遷移
-                val finishIntent = Intent(this, EndActivity::class.java)
-                finishIntent.putExtra("time", startTime)
-                finishIntent.putExtra("endTime", Calendar.getInstance().timeInMillis)
-                startActivity(finishIntent)
-                finish()
-            } else {
-                //効果音
-                soundPool.play(beep, 1.0f, 1.0f, 0, 0, 1.0f)
-            }
+            correctDecision(centerChoice)
         }
         buttonR.setOnClickListener {
-            if (rightChoice == randomImageInt && 0 != numSet) {
-                //効果音
-                soundPool.play(success, 1.0f, 1.0f, 0, 0, 1.0f)
-                //画面遷移
-                val nextStageIntent = Intent(this, GameModeActivity::class.java)
-                numSet--
-                nextStageIntent.putExtra("num", numSet)
-                nextStageIntent.putExtra("time", startTime)
-                startActivity(nextStageIntent)
-                finish()
-            } else if (rightChoice == randomImageInt && 0 == numSet) {
-                //効果音
-                soundPool.play(success, 1.0f, 1.0f, 0, 0, 1.0f)
-
-                //画面遷移
-                val finishIntent = Intent(this, EndActivity::class.java)
-                finishIntent.putExtra("time", startTime)
-                finishIntent.putExtra("endTime", Calendar.getInstance().timeInMillis)
-                startActivity(finishIntent)
-                finish()
-            } else {
-                //効果音
-                soundPool.play(beep, 1.0f, 1.0f, 0, 0, 1.0f)
-            }
+            correctDecision(rightChoice)
         }
     }
 
@@ -152,6 +84,7 @@ class GameModeActivity : AppCompatActivity() {
 
         numSet = intent.getIntExtra("num", 10)
         startTime = intent.getLongExtra("time", Calendar.getInstance().timeInMillis)
+        penaltyInt = intent.getIntExtra("penalty", 0)
 
         soundPool = SoundPool.Builder().build()
         success = soundPool.load(this, R.raw.crrect_answer2, 1)
@@ -199,5 +132,52 @@ class GameModeActivity : AppCompatActivity() {
             1 -> button.text = getString(R.string.choice2)
             2 -> button.text = getString(R.string.choice3)
         }
+    }
+
+    //動作決定用
+    private fun correctDecision(num: Int) {
+        if (num == randomImageInt && 0 != numSet) {
+            successFunction()
+        } else if (num == randomImageInt && 0 == numSet) {
+            endGameFunction()
+        } else {
+            mistakeFunction()
+        }
+    }
+
+
+    //正解時の動作
+    private fun successFunction() {
+        //効果音
+        soundPool.play(success, 1.0f, 1.0f, 0, 0, 1.0f)
+        //画面遷移
+        val nextStageIntent = Intent(this, GameModeActivity::class.java)
+        numSet--
+        nextStageIntent.putExtra("num", numSet)
+        nextStageIntent.putExtra("time", startTime)
+        nextStageIntent.putExtra("penalty", penaltyInt)
+        startActivity(nextStageIntent)
+        finish()
+    }
+
+    //正解時（回数終了）の動作
+    private fun endGameFunction() {
+        //効果音
+        soundPool.play(success, 1.0f, 1.0f, 0, 0, 1.0f)
+
+        //画面遷移
+        val finishIntent = Intent(this, EndActivity::class.java)
+        finishIntent.putExtra("time", startTime)
+        finishIntent.putExtra("endTime", Calendar.getInstance().timeInMillis)
+        finishIntent.putExtra("penalty", penaltyInt)
+        startActivity(finishIntent)
+        finish()
+    }
+
+    //不正解時の動作
+    private fun mistakeFunction() {
+        //効果音
+        soundPool.play(beep, 1.0f, 1.0f, 0, 0, 1.0f)
+        penaltyInt++
     }
 }
