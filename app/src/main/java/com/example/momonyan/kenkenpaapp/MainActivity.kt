@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         highScoreText.text = getString(R.string.highScore,data.getLong("score",999))
         startButton.setOnClickListener {
-            val intent = Intent(this, GameModeActivity::class.java)
+            val intent = Intent(this, TimeAttackModeActivity::class.java)
             intent.putExtra("num", 10)
             startActivity(intent)
 

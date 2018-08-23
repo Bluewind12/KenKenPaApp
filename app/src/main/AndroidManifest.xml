@@ -17,8 +17,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".GameModeActivity"
-            android:label="ゲーム画面" />
+            android:name=".TimeAttackModeActivity"
+            android:label="ゲーム画面(タイムアタック)" />
+        <activity
+            android:name=".ScoreAttackModeActivity"
+            android:label="ゲーム画面(スコアアタック)" />
         <activity
             android:name=".EndActivity"
             android:label="おわり" />
