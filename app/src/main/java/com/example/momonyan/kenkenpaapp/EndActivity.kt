@@ -12,7 +12,8 @@ class EndActivity : AppCompatActivity() {
     private lateinit var scoreText: TextView
     private lateinit var backButton: Button
     private var score: Long = 0
-    private var scoreMin: Long = 0
+    private var penalty: Int = 0
+    private var scorePenaltyAdd: Long = 0
     private lateinit var data: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +21,7 @@ class EndActivity : AppCompatActivity() {
         setContentView(R.layout.end_point)
         init()
         setScore()
-        scoreText.text = getString(R.string.score, score)
+        scoreText.text = getString(R.string.score, score, penalty, scorePenaltyAdd)
         backButton.setOnClickListener {
             val endIntent = Intent(this, MainActivity::class.java)
             startActivity(endIntent)
@@ -31,7 +32,9 @@ class EndActivity : AppCompatActivity() {
     private fun init() {
         scoreText = findViewById(R.id.scoreText)
         backButton = findViewById(R.id.homeBackButton)
+        penalty = intent.getIntExtra("penalty", 0)
         score = (intent.getLongExtra("endTime", 0) - intent.getLongExtra("time", 999999)) / 1000
+        scorePenaltyAdd = score + (penalty * 10)
         data = getSharedPreferences("ScoreTable", Context.MODE_PRIVATE)
         editor = data.edit()
     }
