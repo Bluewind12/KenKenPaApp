@@ -10,7 +10,9 @@ import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var timeAttackPlayButton: Button
-    private lateinit var highScoreText: TextView
+    private lateinit var scoreAttackPlayButton: Button
+    private lateinit var highTime: TextView
+    private lateinit var highScore: TextView
     private lateinit var data: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,12 +21,17 @@ class MainActivity : AppCompatActivity() {
 
         init()
 
-        highScoreText.text = getString(R.string.highScore,data.getLong("score",999))
+        highTime.text = getString(R.string.highScore1, data.getLong("scoreTimeA", 999))
+        highScore.text = getString(R.string.highScore2, data.getLong("scoreScoreA", 999))
 
         //タイムアタック用
         timeAttackPlayButton.setOnClickListener {
             val intent = Intent(this, TimeAttackModeActivity::class.java)
             intent.putExtra("num", 10)
+            startActivity(intent)
+        }
+        scoreAttackPlayButton.setOnClickListener {
+            val intent = Intent(this, ScoreAttackModeActivity::class.java)
             startActivity(intent)
         }
 
@@ -33,7 +40,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun init() {
         timeAttackPlayButton = findViewById(R.id.startButton1)
-        highScoreText = findViewById(R.id.highScoreTextView)
+        scoreAttackPlayButton = findViewById(R.id.startButton2)
+        highTime = findViewById(R.id.highScore_Time)
+        highScore = findViewById(R.id.highScore_Score)
         data = getSharedPreferences("ScoreTable", Context.MODE_PRIVATE)
 
     }

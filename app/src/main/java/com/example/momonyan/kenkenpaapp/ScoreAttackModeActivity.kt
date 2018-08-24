@@ -49,11 +49,7 @@ class ScoreAttackModeActivity : AppCompatActivity() {
 
         //初期宣言
         init()
-        when (randomImageInt) {
-            0 -> image.setImageResource(R.drawable.fabric_mark_circle)
-            1 -> image.setImageResource(R.drawable.fabric_mark_triangle)
-            2 -> image.setImageResource(R.drawable.roman_number10)
-        }
+        gameReset()
         //数値設定
         choiceNumPoint()
 
@@ -85,17 +81,31 @@ class ScoreAttackModeActivity : AppCompatActivity() {
         buttonC = findViewById(R.id.scoreButtonC)
         buttonR = findViewById(R.id.scoreButtonR)
 
-        randomImageInt = random.nextInt(3)
-        randomChoiceInt = random.nextInt(6)
-
-        penaltyInt = intent.getIntExtra("penalty", 0)
+        timeText = findViewById(R.id.timeTextView)
+        scoreText = findViewById(R.id.scoreTextView)
+        scoreText.text = getString(R.string.scoreView,0,0)
 
         soundPool = SoundPool.Builder().build()
         success = soundPool.load(this, R.raw.crrect_answer2, 1)
         beep = soundPool.load(this, R.raw.blip04, 1)
     }
 
+    private fun gameReset() {
+        randomImageInt = random.nextInt(3)
+        randomChoiceInt = random.nextInt(6)
+        choiceNumPoint()
+        //ボタンテキスト設定
+        buttonTextChange(buttonL, leftChoice)
+        buttonTextChange(buttonC, centerChoice)
+        buttonTextChange(buttonR, rightChoice)
+    }
+
     private fun choiceNumPoint() {
+        when (randomImageInt) {
+            0 -> image.setImageResource(R.drawable.fabric_mark_circle)
+            1 -> image.setImageResource(R.drawable.fabric_mark_triangle)
+            2 -> image.setImageResource(R.drawable.roman_number10)
+        }
         when (randomChoiceInt) {
             0 -> {
                 leftChoice = 0
@@ -137,6 +147,7 @@ class ScoreAttackModeActivity : AppCompatActivity() {
             2 -> button.text = getString(R.string.choice3)
         }
     }
+
     //動作決定用
     private fun correctDecision(num: Int) {
         if (num == randomImageInt) {
@@ -153,7 +164,9 @@ class ScoreAttackModeActivity : AppCompatActivity() {
         soundPool.play(success, 1.0f, 1.0f, 0, 0, 1.0f)
 
         //動作
-
+        pointNum++
+        scoreText.text = getString(R.string.scoreView,pointNum,penaltyInt)
+        gameReset()
 
     }
 
@@ -163,6 +176,7 @@ class ScoreAttackModeActivity : AppCompatActivity() {
         //効果音
         soundPool.play(beep, 1.0f, 1.0f, 0, 0, 1.0f)
         penaltyInt++
+        scoreText.text = getString(R.string.scoreView,pointNum,penaltyInt)
     }
 
     //カウントダウン
@@ -171,6 +185,9 @@ class ScoreAttackModeActivity : AppCompatActivity() {
         override fun onFinish() {
             // 完了
             val intent = Intent(this@ScoreAttackModeActivity, EndActivity::class.java)
+            intent.putExtra("score",pointNum)
+            intent.putExtra("penalty",penaltyInt)
+            intent.putExtra("mode","Score")
             startActivity(intent)
             finish()
         }
