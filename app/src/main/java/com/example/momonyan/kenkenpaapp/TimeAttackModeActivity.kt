@@ -170,6 +170,7 @@ class TimeAttackModeActivity : AppCompatActivity() {
         finishIntent.putExtra("time", startTime)
         finishIntent.putExtra("endTime", Calendar.getInstance().timeInMillis)
         finishIntent.putExtra("penalty", penaltyInt)
+        finishIntent.putExtra("mode",1)
         startActivity(finishIntent)
         finish()
     }
