@@ -187,7 +187,7 @@ class ScoreAttackModeActivity : AppCompatActivity() {
             val intent = Intent(this@ScoreAttackModeActivity, EndActivity::class.java)
             intent.putExtra("score",pointNum)
             intent.putExtra("penalty",penaltyInt)
-            intent.putExtra("mode","Score")
+            intent.putExtra("mode",2)
             startActivity(intent)
             finish()
         }

@@ -22,12 +22,12 @@ class MainActivity : AppCompatActivity() {
         init()
 
         highTime.text = getString(R.string.highScore1, data.getLong("scoreTimeA", 999))
-        highScore.text = getString(R.string.highScore2, data.getLong("scoreScoreA", 999))
+        highScore.text = getString(R.string.highScore2, data.getInt("scoreScoreA", 0))
 
         //タイムアタック用
         timeAttackPlayButton.setOnClickListener {
             val intent = Intent(this, TimeAttackModeActivity::class.java)
-            intent.putExtra("num", 10)
+            intent.putExtra("num", 9)
             startActivity(intent)
         }
         scoreAttackPlayButton.setOnClickListener {

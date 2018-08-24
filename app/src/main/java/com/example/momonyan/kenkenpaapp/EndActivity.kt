@@ -12,6 +12,9 @@ class EndActivity : AppCompatActivity() {
     private lateinit var scoreText: TextView
     private lateinit var resultView: TextView
     private lateinit var backButton: Button
+
+    private var modeInt:Int = 0
+
     private var penalty: Int = 0
 
     //ScoreAttack用
@@ -24,15 +27,17 @@ class EndActivity : AppCompatActivity() {
 
     private lateinit var data: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.end_point)
+        modeInt = intent.getIntExtra("mode",0)
         init()
         setScore()
-        if (intent.getStringExtra("mode").equals("Time")) {
+        if (modeInt== 1) {
             scoreText.text = getString(R.string.score, score, penalty)
             resultView.text = getString(R.string.scoreResult, scorePenaltyAdd)
-        } else if (intent.getStringExtra("mode").equals("Score")) {
+        } else if (modeInt ==2) {
             scoreText.text = getString(R.string.score2, scoreSA, penalty)
             resultView.text = getString(R.string.scoreResult2, scoreAll)
         }
@@ -47,11 +52,14 @@ class EndActivity : AppCompatActivity() {
         scoreText = findViewById(R.id.scoreText)
         resultView = findViewById(R.id.resultView)
         backButton = findViewById(R.id.homeBackButton)
-        if (intent.getStringExtra("mode").equals("Time")) {
+
+
+        if (modeInt == 1) {
             penalty = intent.getIntExtra("penalty", 0)
             score = (intent.getLongExtra("endTime", 0) - intent.getLongExtra("time", 999999)) / 1000
             scorePenaltyAdd = score + (penalty * 10)
-        } else if (intent.getStringExtra("mode").equals("Score")) {
+
+        } else if (modeInt ==2) {
             penalty = intent.getIntExtra("penalty", 0)
             scoreSA = intent.getIntExtra("score", 0)
             scoreAll = scoreSA - penalty
@@ -61,14 +69,14 @@ class EndActivity : AppCompatActivity() {
     }
 
     private fun setScore() {
-        if (intent.getStringExtra("mode").equals("Time")) {
+        if (modeInt == 1) {
             if (score < data.getLong("scoreTimeA", Long.MAX_VALUE)) {
                 editor.putLong("scoreTimeA", scorePenaltyAdd)
                 editor.apply()
             }
-        } else if (intent.getStringExtra("mode").equals("Score")) {
-            if (score > data.getLong("scoreScoreA", Long.MIN_VALUE)) {
-                editor.putLong("scoreScoreA", scorePenaltyAdd)
+        } else if (modeInt == 2) {
+            if (scoreAll > data.getInt("scoreScoreA", 0)) {
+                editor.putInt("scoreScoreA", scoreAll)
                 editor.apply()
             }
 
