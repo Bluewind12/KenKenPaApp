@@ -93,6 +93,7 @@ class ScoreAttackModeActivity : AppCompatActivity() {
     private fun gameReset() {
         randomImageInt = random.nextInt(3)
         randomChoiceInt = random.nextInt(6)
+        setRandomImage()
         choiceNumPoint()
         //ボタンテキスト設定
         buttonTextChange(buttonL, leftChoice)
@@ -101,11 +102,6 @@ class ScoreAttackModeActivity : AppCompatActivity() {
     }
 
     private fun choiceNumPoint() {
-        when (randomImageInt) {
-            0 -> image.setImageResource(R.drawable.fabric_mark_circle)
-            1 -> image.setImageResource(R.drawable.fabric_mark_triangle)
-            2 -> image.setImageResource(R.drawable.roman_number10)
-        }
         when (randomChoiceInt) {
             0 -> {
                 leftChoice = 0
@@ -198,6 +194,26 @@ class ScoreAttackModeActivity : AppCompatActivity() {
             val ss = millisUntilFinished / 1000 % 60;
             timeText.text = String.format("%d", ss);
 
+        }
+    }
+
+    /**
+     * 画像設定
+     *  - ランダムイメージ、残り回数に応じたイメージの設定
+     */
+    private fun setRandomImage() {
+        if (pointNum % 2 == 0) {
+            when (randomImageInt) {
+                0 -> image.setImageResource(R.drawable.fabric_mark_circle)
+                1 -> image.setImageResource(R.drawable.fabric_mark_triangle)
+                2 -> image.setImageResource(R.drawable.roman_number10)
+            }
+        } else {
+            when (randomImageInt) {
+                0 -> image.setImageResource(R.drawable.mark_maru)
+                1 -> image.setImageResource(R.drawable.character_sankaku2)
+                2 -> image.setImageResource(R.drawable.mark_batsu)
+            }
         }
     }
 }

@@ -111,6 +111,12 @@ class TimeAttackModeActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * ボタンのTextの設定
+     *  - ボタンのTextを数値に応じた文字列に変更する
+     *  @param button 変更するボタン
+     *  @param choiceNum 設定するフラグ値
+     */
     private fun buttonTextChange(button: Button, choiceNum: Int) {
         when (choiceNum) {
             0 -> button.text = getString(R.string.choice1)
@@ -164,14 +170,10 @@ class TimeAttackModeActivity : AppCompatActivity() {
     private fun resetGame() {
         randomImageInt = random.nextInt(3)
         randomChoiceInt = random.nextInt(6)
+
         choiceNumPoint()
-
-
-        when (randomImageInt) {
-            0 -> image.setImageResource(R.drawable.fabric_mark_circle)
-            1 -> image.setImageResource(R.drawable.fabric_mark_triangle)
-            2 -> image.setImageResource(R.drawable.roman_number10)
-        }
+        //画像セット
+        setRandomImage()
         //数値設定
         choiceNumPoint()
 
@@ -181,5 +183,25 @@ class TimeAttackModeActivity : AppCompatActivity() {
         buttonTextChange(buttonR, rightChoice)
 
         restNumText.text = getString(R.string.rest, numSet + 1)
+    }
+
+    /**
+     * 画像設定
+     *  - ランダムイメージ、残り回数に応じたイメージの設定
+     */
+    private fun setRandomImage() {
+        if (numSet % 2 == 0) {
+            when (randomImageInt) {
+                0 -> image.setImageResource(R.drawable.fabric_mark_circle)
+                1 -> image.setImageResource(R.drawable.fabric_mark_triangle)
+                2 -> image.setImageResource(R.drawable.roman_number10)
+            }
+        } else {
+            when (randomImageInt) {
+                0 -> image.setImageResource(R.drawable.mark_maru)
+                1 -> image.setImageResource(R.drawable.character_sankaku2)
+                2 -> image.setImageResource(R.drawable.mark_batsu)
+            }
+        }
     }
 }
