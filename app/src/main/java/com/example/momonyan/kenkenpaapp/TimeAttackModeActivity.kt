@@ -182,7 +182,7 @@ class TimeAttackModeActivity : AppCompatActivity() {
         buttonTextChange(buttonC, centerChoice)
         buttonTextChange(buttonR, rightChoice)
 
-        restNumText.text = getString(R.string.rest, numSet + 1)
+        restNumText.text = getString(R.string.rest, numSet)
     }
 
     /**

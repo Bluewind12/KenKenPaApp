@@ -20,6 +20,9 @@
             android:name=".TimeAttackModeActivity"
             android:label="ゲーム画面(タイムアタック)" />
         <activity
+            android:name=".GameStandbyActivity"
+            android:label="スタンバイ画面" />
+        <activity
             android:name=".ScoreAttackModeActivity"
             android:label="ゲーム画面(スコアアタック)" />
         <activity

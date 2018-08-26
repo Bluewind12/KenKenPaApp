@@ -61,7 +61,7 @@ class ScoreAttackModeActivity : AppCompatActivity() {
         val countNum: Long = 30 * 1000
         val interval: Long = 100
 
-        val countDown: CountDown = CountDown(countNum, interval)
+        val countDown= CountDown(countNum, interval)
         countDown.start()
 
         buttonL.setOnClickListener {
@@ -83,7 +83,7 @@ class ScoreAttackModeActivity : AppCompatActivity() {
 
         timeText = findViewById(R.id.timeTextView)
         scoreText = findViewById(R.id.scoreTextView)
-        scoreText.text = getString(R.string.scoreView,0,0)
+        scoreText.text = getString(R.string.scoreView, 0, 0)
 
         soundPool = SoundPool.Builder().build()
         success = soundPool.load(this, R.raw.crrect_answer2, 1)
@@ -161,7 +161,7 @@ class ScoreAttackModeActivity : AppCompatActivity() {
 
         //動作
         pointNum++
-        scoreText.text = getString(R.string.scoreView,pointNum,penaltyInt)
+        scoreText.text = getString(R.string.scoreView, pointNum, penaltyInt)
         gameReset()
 
     }
@@ -172,18 +172,20 @@ class ScoreAttackModeActivity : AppCompatActivity() {
         //効果音
         soundPool.play(beep, 1.0f, 1.0f, 0, 0, 1.0f)
         penaltyInt++
-        scoreText.text = getString(R.string.scoreView,pointNum,penaltyInt)
+        scoreText.text = getString(R.string.scoreView, pointNum, penaltyInt)
     }
 
-    //カウントダウン
+    /**
+     * カウントダウンの動作
+     */
     internal inner class CountDown(millisInFuture: Long, countDownInterval: Long) : CountDownTimer(millisInFuture, countDownInterval) {
 
         override fun onFinish() {
             // 完了
             val intent = Intent(this@ScoreAttackModeActivity, EndActivity::class.java)
-            intent.putExtra("score",pointNum)
-            intent.putExtra("penalty",penaltyInt)
-            intent.putExtra("mode",2)
+            intent.putExtra("score", pointNum)
+            intent.putExtra("penalty", penaltyInt)
+            intent.putExtra("mode", 2)
             startActivity(intent)
             finish()
         }
