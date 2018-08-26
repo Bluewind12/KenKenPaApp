@@ -46,20 +46,7 @@ class TimeAttackModeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.time_attack_game_layout)
         init()
-        restNumText.text = getString(R.string.rest, numSet + 1)
-
-        when (randomImageInt) {
-            0 -> image.setImageResource(R.drawable.fabric_mark_circle)
-            1 -> image.setImageResource(R.drawable.fabric_mark_triangle)
-            2 -> image.setImageResource(R.drawable.roman_number10)
-        }
-        //数値設定
-        choiceNumPoint()
-
-        //ボタンテキスト設定
-        buttonTextChange(buttonL, leftChoice)
-        buttonTextChange(buttonC, centerChoice)
-        buttonTextChange(buttonR, rightChoice)
+        resetGame()
 
         buttonL.setOnClickListener {
             correctDecision(leftChoice)
@@ -79,12 +66,10 @@ class TimeAttackModeActivity : AppCompatActivity() {
         buttonR = findViewById(R.id.buttonR)
         restNumText = findViewById(R.id.restNumText)
 
-        randomImageInt = random.nextInt(3)
-        randomChoiceInt = random.nextInt(6)
 
-        numSet = intent.getIntExtra("num", 10)
-        startTime = intent.getLongExtra("time", Calendar.getInstance().timeInMillis)
-        penaltyInt = intent.getIntExtra("penalty", 0)
+        numSet = 10
+        startTime = Calendar.getInstance().timeInMillis
+        penaltyInt = 0
 
         soundPool = SoundPool.Builder().build()
         success = soundPool.load(this, R.raw.crrect_answer2, 1)
@@ -126,6 +111,12 @@ class TimeAttackModeActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * ボタンのTextの設定
+     *  - ボタンのTextを数値に応じた文字列に変更する
+     *  @param button 変更するボタン
+     *  @param choiceNum 設定するフラグ値
+     */
     private fun buttonTextChange(button: Button, choiceNum: Int) {
         when (choiceNum) {
             0 -> button.text = getString(R.string.choice1)
@@ -150,14 +141,8 @@ class TimeAttackModeActivity : AppCompatActivity() {
     private fun successFunction() {
         //効果音
         soundPool.play(success, 1.0f, 1.0f, 0, 0, 1.0f)
-        //画面遷移
-        val nextStageIntent = Intent(this, TimeAttackModeActivity::class.java)
         numSet--
-        nextStageIntent.putExtra("num", numSet)
-        nextStageIntent.putExtra("time", startTime)
-        nextStageIntent.putExtra("penalty", penaltyInt)
-        startActivity(nextStageIntent)
-        finish()
+        resetGame()
     }
 
     //正解時（回数終了）の動作
@@ -170,7 +155,7 @@ class TimeAttackModeActivity : AppCompatActivity() {
         finishIntent.putExtra("time", startTime)
         finishIntent.putExtra("endTime", Calendar.getInstance().timeInMillis)
         finishIntent.putExtra("penalty", penaltyInt)
-        finishIntent.putExtra("mode",1)
+        finishIntent.putExtra("mode", 1)
         startActivity(finishIntent)
         finish()
     }
@@ -180,5 +165,43 @@ class TimeAttackModeActivity : AppCompatActivity() {
         //効果音
         soundPool.play(beep, 1.0f, 1.0f, 0, 0, 1.0f)
         penaltyInt++
+    }
+
+    private fun resetGame() {
+        randomImageInt = random.nextInt(3)
+        randomChoiceInt = random.nextInt(6)
+
+        choiceNumPoint()
+        //画像セット
+        setRandomImage()
+        //数値設定
+        choiceNumPoint()
+
+        //ボタンテキスト設定
+        buttonTextChange(buttonL, leftChoice)
+        buttonTextChange(buttonC, centerChoice)
+        buttonTextChange(buttonR, rightChoice)
+
+        restNumText.text = getString(R.string.rest, numSet)
+    }
+
+    /**
+     * 画像設定
+     *  - ランダムイメージ、残り回数に応じたイメージの設定
+     */
+    private fun setRandomImage() {
+        if (numSet % 2 == 0) {
+            when (randomImageInt) {
+                0 -> image.setImageResource(R.drawable.fabric_mark_circle)
+                1 -> image.setImageResource(R.drawable.fabric_mark_triangle)
+                2 -> image.setImageResource(R.drawable.roman_number10)
+            }
+        } else {
+            when (randomImageInt) {
+                0 -> image.setImageResource(R.drawable.mark_maru)
+                1 -> image.setImageResource(R.drawable.character_sankaku2)
+                2 -> image.setImageResource(R.drawable.mark_batsu)
+            }
+        }
     }
 }

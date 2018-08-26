@@ -70,7 +70,7 @@ class EndActivity : AppCompatActivity() {
 
     private fun setScore() {
         if (modeInt == 1) {
-            if (score < data.getLong("scoreTimeA", Long.MAX_VALUE)) {
+            if (scorePenaltyAdd < data.getLong("scoreTimeA", Long.MAX_VALUE)) {
                 editor.putLong("scoreTimeA", scorePenaltyAdd)
                 editor.apply()
             }

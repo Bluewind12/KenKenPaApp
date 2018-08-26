@@ -23,15 +23,15 @@ class MainActivity : AppCompatActivity() {
 
         highTime.text = getString(R.string.highScore1, data.getLong("scoreTimeA", 999))
         highScore.text = getString(R.string.highScore2, data.getInt("scoreScoreA", 0))
+        val intent = Intent(this, GameStandbyActivity::class.java)
 
         //タイムアタック用
         timeAttackPlayButton.setOnClickListener {
-            val intent = Intent(this, TimeAttackModeActivity::class.java)
-            intent.putExtra("num", 9)
+            intent.putExtra("standby", 0)
             startActivity(intent)
         }
         scoreAttackPlayButton.setOnClickListener {
-            val intent = Intent(this, ScoreAttackModeActivity::class.java)
+            intent.putExtra("standby", 1)
             startActivity(intent)
         }
 
