@@ -6,6 +6,7 @@ import android.media.SoundPool
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.os.CountDownTimer
+import android.view.KeyEvent
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -43,6 +44,9 @@ class ScoreAttackModeActivity : AppCompatActivity() {
     //不正解回数
     private var penaltyInt: Int = 0
 
+    //カウントダウン管理用
+    private lateinit var countDown:CountDown
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.score_attack_game_layout)
@@ -61,7 +65,7 @@ class ScoreAttackModeActivity : AppCompatActivity() {
         val countNum: Long = 30 * 1000
         val interval: Long = 100
 
-        val countDown= CountDown(countNum, interval)
+        countDown= CountDown(countNum, interval)
         countDown.start()
 
         buttonL.setOnClickListener {
@@ -73,6 +77,14 @@ class ScoreAttackModeActivity : AppCompatActivity() {
         buttonR.setOnClickListener {
             correctDecision(rightChoice)
         }
+    }
+
+    //キー入力動作
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if(keyCode == KeyEvent.KEYCODE_BACK) {
+            countDown.cancel()
+        }
+        return super.onKeyDown(keyCode, event)
     }
 
     private fun init() {
@@ -178,7 +190,7 @@ class ScoreAttackModeActivity : AppCompatActivity() {
     /**
      * カウントダウンの動作
      */
-    internal inner class CountDown(millisInFuture: Long, countDownInterval: Long) : CountDownTimer(millisInFuture, countDownInterval) {
+   internal inner class CountDown(millisInFuture: Long, countDownInterval: Long) : CountDownTimer(millisInFuture, countDownInterval) {
 
         override fun onFinish() {
             // 完了
