@@ -5,12 +5,17 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.app.AppCompatActivity
+import android.view.KeyEvent
 import android.widget.TextView
+import android.view.KeyEvent.KEYCODE_BACK
+
+
 
 class GameStandbyActivity : AppCompatActivity() {
 
     private var gameMode: Int = 9
     private lateinit var textView: TextView
+    private lateinit var countDown:CountDown
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,10 +27,16 @@ class GameStandbyActivity : AppCompatActivity() {
         val countNum: Long = 3 * 1000
         val interval: Long = 100
 
-        val countDown = CountDown(countNum, interval)
+        countDown = CountDown(countNum, interval)
         countDown.start()
     }
 
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if(keyCode == KeyEvent.KEYCODE_BACK) {
+            countDown.cancel()
+        }
+        return super.onKeyDown(keyCode, event)
+    }
     /**
      * カウントダウンの動作
      */
