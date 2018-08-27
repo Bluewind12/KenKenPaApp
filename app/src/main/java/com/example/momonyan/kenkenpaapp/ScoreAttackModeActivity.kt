@@ -78,6 +78,7 @@ class ScoreAttackModeActivity : AppCompatActivity() {
             correctDecision(rightChoice)
         }
     }
+
     //キー入力動作
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if(keyCode == KeyEvent.KEYCODE_BACK) {

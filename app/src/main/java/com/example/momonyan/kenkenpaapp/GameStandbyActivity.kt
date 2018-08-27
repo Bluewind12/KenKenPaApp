@@ -1,8 +1,10 @@
 package com.example.momonyan.kenkenpaapp
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.support.v4.content.ContextCompat
 import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.app.AppCompatActivity
 import android.view.KeyEvent
@@ -24,7 +26,7 @@ class GameStandbyActivity : AppCompatActivity() {
         textView = findViewById(R.id.standbyTimeText)
         gameMode = intent.getIntExtra("standby", 9)
 
-        val countNum: Long = 3 * 1000
+        val countNum: Long = 3500
         val interval: Long = 100
 
         countDown = CountDown(countNum, interval)
@@ -63,8 +65,12 @@ class GameStandbyActivity : AppCompatActivity() {
         override fun onTick(millisUntilFinished: Long) {
             // 残り時間を分、秒、ミリ秒に分割
             val ss = millisUntilFinished / 1000 % 60;
-            textView.text = String.format("%d", ss + 1);
-
+            if(ss > 0) {
+                textView.text = String.format("%d", ss );
+            }else{
+                textView.setTextColor(ContextCompat.getColor(this@GameStandbyActivity,R.color.colorAccent))
+                textView.text = "GO!"
+            }
         }
     }
 }
