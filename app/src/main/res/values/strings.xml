@@ -1,8 +1,10 @@
 <resources>
-    <string name="app_name">KenKenPaApp</string>
-    <string name="name">けん☆けん☆ぱ</string>
+    <string name="app_name">瞬発力ゲーム</string>
+    <string name="name">瞬発力</string>
+    <string name="subName">～ 君の瞬発力の限界を競え ～</string>
+
     <string name="start1">タイムアタック\nスタート</string>
-    <string name="start2">スコアアタック\nスタート</string>
+    <string name="start2">ポイントアタック\nスタート</string>
     <string name="choice1">●</string>
     <string name="choice2">▲</string>
     <string name="choice3">×</string>
@@ -14,7 +16,10 @@
     <string name="score2">%d Point - %d miss </string>
     <string name="scoreResult2">ScoreResult:%d</string>
 
-    <string name="highScore1">HighScore\n(タイムアタック) : %d sec</string>
-    <string name="highScore2">HighScore\n(スコアアタック) : %d ポイント</string>
+    <string name="modeSelect">ゲームモードを選択</string>
+
+    <string name="highScore">ハイスコア</string>
+    <string name="scoreTime">タイムアタック : %d sec</string>
+    <string name="scorePoint">ポイントアタック : %d ポイント</string>
 
 </resources>
