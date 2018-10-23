@@ -2,6 +2,7 @@ package com.example.momonyan.kenkenpaapp
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Point
 import android.media.SoundPool
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -45,7 +46,7 @@ class ScoreAttackModeActivity : AppCompatActivity() {
     private var penaltyInt: Int = 0
 
     //カウントダウン管理用
-    private lateinit var countDown:CountDown
+    private lateinit var countDown: CountDown
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +66,7 @@ class ScoreAttackModeActivity : AppCompatActivity() {
         val countNum: Long = 30 * 1000
         val interval: Long = 100
 
-        countDown= CountDown(countNum, interval)
+        countDown = CountDown(countNum, interval)
         countDown.start()
 
         buttonL.setOnClickListener {
@@ -81,7 +82,7 @@ class ScoreAttackModeActivity : AppCompatActivity() {
 
     //キー入力動作
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if(keyCode == KeyEvent.KEYCODE_BACK) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             countDown.cancel()
         }
         return super.onKeyDown(keyCode, event)
@@ -92,6 +93,15 @@ class ScoreAttackModeActivity : AppCompatActivity() {
         buttonL = findViewById(R.id.scoreButtonL)
         buttonC = findViewById(R.id.scoreButtonC)
         buttonR = findViewById(R.id.scoreButtonR)
+        val point = Point()
+        windowManager.defaultDisplay.getSize(point)
+        buttonL.width = (point.x / 3) - 100
+        buttonL.height = (point.x / 10) - 50
+        buttonC.width = (point.x / 3) - 100
+        buttonC.height = (point.x / 10) - 50
+        buttonR.width = (point.x / 3) - 100
+        buttonR.height = (point.x / 10) - 50
+
 
         timeText = findViewById(R.id.timeTextView)
         scoreText = findViewById(R.id.scoreTextView)
@@ -190,7 +200,7 @@ class ScoreAttackModeActivity : AppCompatActivity() {
     /**
      * カウントダウンの動作
      */
-   internal inner class CountDown(millisInFuture: Long, countDownInterval: Long) : CountDownTimer(millisInFuture, countDownInterval) {
+    internal inner class CountDown(millisInFuture: Long, countDownInterval: Long) : CountDownTimer(millisInFuture, countDownInterval) {
 
         override fun onFinish() {
             // 完了
