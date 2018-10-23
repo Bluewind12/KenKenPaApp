@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         timeAttackPlayButton.width = (displaySize(0) / 2) - 100
         scoreAttackPlayButton.width = (displaySize(0) / 2) - 100
 
-        timeAttackPlayButton.height =(displaySize(0) / 4) - 100
+        timeAttackPlayButton.height = (displaySize(0) / 4) - 100
         scoreAttackPlayButton.height = (displaySize(0) / 4) - 100
 
 
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         when (select) {
             0 -> return point.x
             1 -> return point.y
-            else -> return 0
+            else -> error("サイズ取得エラー")
         }
     }
 }

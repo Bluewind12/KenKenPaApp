@@ -42,6 +42,7 @@
         android:background="@drawable/style_button"
         android:text="@string/start1"
         android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -54,6 +55,7 @@
         android:background="@drawable/style_button"
         android:text="@string/start2"
         android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
