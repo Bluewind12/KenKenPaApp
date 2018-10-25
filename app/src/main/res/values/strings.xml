@@ -9,12 +9,12 @@
     <string name="choice2">▲</string>
     <string name="choice3">×</string>
     <string name="rest">残り%d</string>
-    <string name="scoreView">Score:%d Miss:%d</string>
-    <string name="score">%d sec + %d miss * 10</string>
-    <string name="scoreResult">ScoreResult:%d</string>
+    <string name="scoreView">正解数:%d お手つき:%d</string>
+    <string name="score">%d 秒 + %d ペナルティ * 10</string>
+    <string name="scoreResult">スコア:%d 秒</string>
 
-    <string name="score2">%d Point - %d miss </string>
-    <string name="scoreResult2">ScoreResult:%d</string>
+    <string name="score2">%d 正解 - %d ペナルティ </string>
+    <string name="scoreResult2">スコア:%d ポイント</string>
 
     <string name="modeSelect">ゲームモードを選択</string>
 

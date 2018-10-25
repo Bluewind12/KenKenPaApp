@@ -13,7 +13,7 @@ class EndActivity : AppCompatActivity() {
     private lateinit var resultView: TextView
     private lateinit var backButton: Button
 
-    private var modeInt:Int = 0
+    private var modeInt: Int = 0
 
     private var penalty: Int = 0
 
@@ -31,13 +31,13 @@ class EndActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.end_point)
-        modeInt = intent.getIntExtra("mode",0)
+        modeInt = intent.getIntExtra("mode", 0)
         init()
         setScore()
-        if (modeInt== 1) {
+        if (modeInt == 1) {
             scoreText.text = getString(R.string.score, score, penalty)
             resultView.text = getString(R.string.scoreResult, scorePenaltyAdd)
-        } else if (modeInt ==2) {
+        } else if (modeInt == 2) {
             scoreText.text = getString(R.string.score2, scoreSA, penalty)
             resultView.text = getString(R.string.scoreResult2, scoreAll)
         }
@@ -59,7 +59,7 @@ class EndActivity : AppCompatActivity() {
             score = (intent.getLongExtra("endTime", 0) - intent.getLongExtra("time", 999999)) / 1000
             scorePenaltyAdd = score + (penalty * 10)
 
-        } else if (modeInt ==2) {
+        } else if (modeInt == 2) {
             penalty = intent.getIntExtra("penalty", 0)
             scoreSA = intent.getIntExtra("score", 0)
             scoreAll = scoreSA - penalty
