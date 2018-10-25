@@ -10,8 +10,8 @@
     <string name="choice3">×</string>
     <string name="rest">残り%d</string>
     <string name="scoreView">正解数:%d お手つき:%d</string>
-    <string name="score">%d 秒 + %d ペナルティ * 10</string>
-    <string name="scoreResult">スコア:%d 秒</string>
+    <string name="score">%.2f 秒 + %d ペナルティ * 10</string>
+    <string name="scoreResult">スコア:%.2f 秒</string>
 
     <string name="score2">%d 正解 - %d ペナルティ </string>
     <string name="scoreResult2">スコア:%d ポイント</string>
@@ -19,7 +19,7 @@
     <string name="modeSelect">ゲームモードを選択</string>
 
     <string name="highScore">ハイスコア</string>
-    <string name="scoreTime">タイムアタック : %d sec</string>
+    <string name="scoreTime">タイムアタック : %.2f sec</string>
     <string name="scorePoint">ポイントアタック : %d ポイント</string>
 
 </resources>
