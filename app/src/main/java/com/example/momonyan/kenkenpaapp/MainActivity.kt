@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         //初期宣言
         init()
 
-        highTime.text = getString(R.string.scoreTime, data.getLong("scoreTimeA", 999))
+        highTime.text = getString(R.string.scoreTime, data.getFloat("scoreTimeA", 999.98f))
         highScore.text = getString(R.string.scorePoint, data.getInt("scoreScoreA", 0))
         val intent = Intent(this, GameStandbyActivity::class.java)
 

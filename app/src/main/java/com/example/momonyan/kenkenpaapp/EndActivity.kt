@@ -13,7 +13,7 @@ class EndActivity : AppCompatActivity() {
     private lateinit var resultView: TextView
     private lateinit var backButton: Button
 
-    private var modeInt:Int = 0
+    private var modeInt: Int = 0
 
     private var penalty: Int = 0
 
@@ -22,8 +22,8 @@ class EndActivity : AppCompatActivity() {
     private var scoreAll: Int = 0
 
     //タイムアタック用
-    private var score: Long = 0
-    private var scorePenaltyAdd: Long = 0
+    private var score: Double = 0.0
+    private var scorePenaltyAdd: Double = 0.0
 
     private lateinit var data: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
@@ -31,13 +31,13 @@ class EndActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.end_point)
-        modeInt = intent.getIntExtra("mode",0)
+        modeInt = intent.getIntExtra("mode", 0)
         init()
         setScore()
-        if (modeInt== 1) {
+        if (modeInt == 1) {
             scoreText.text = getString(R.string.score, score, penalty)
             resultView.text = getString(R.string.scoreResult, scorePenaltyAdd)
-        } else if (modeInt ==2) {
+        } else if (modeInt == 2) {
             scoreText.text = getString(R.string.score2, scoreSA, penalty)
             resultView.text = getString(R.string.scoreResult2, scoreAll)
         }
@@ -56,10 +56,10 @@ class EndActivity : AppCompatActivity() {
 
         if (modeInt == 1) {
             penalty = intent.getIntExtra("penalty", 0)
-            score = (intent.getLongExtra("endTime", 0) - intent.getLongExtra("time", 999999)) / 1000
-            scorePenaltyAdd = score + (penalty * 10)
+            score = (intent.getLongExtra("endTime", 0) - intent.getLongExtra("time", 999999)) / 1000.0
+            scorePenaltyAdd = score + (penalty * 10.0)
 
-        } else if (modeInt ==2) {
+        } else if (modeInt == 2) {
             penalty = intent.getIntExtra("penalty", 0)
             scoreSA = intent.getIntExtra("score", 0)
             scoreAll = scoreSA - penalty
@@ -70,8 +70,8 @@ class EndActivity : AppCompatActivity() {
 
     private fun setScore() {
         if (modeInt == 1) {
-            if (scorePenaltyAdd < data.getLong("scoreTimeA", Long.MAX_VALUE)) {
-                editor.putLong("scoreTimeA", scorePenaltyAdd)
+            if (scorePenaltyAdd < data.getFloat("scoreTimeA", 999.98f)) {
+                editor.putFloat("scoreTimeA", scorePenaltyAdd.toFloat())
                 editor.apply()
             }
         } else if (modeInt == 2) {
