@@ -62,7 +62,7 @@ class ScoreAttackModeActivity : AppCompatActivity() {
         buttonTextChange(buttonC, centerChoice)
         buttonTextChange(buttonR, rightChoice)
 
-        val countNum: Long = 30 * 1000
+        val countNum: Long = 15 * 1000
         val interval: Long = 100
 
         countDown= CountDown(countNum, interval)
