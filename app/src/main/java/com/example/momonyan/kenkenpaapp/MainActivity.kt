@@ -4,8 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Point
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
 
@@ -73,4 +77,27 @@ class MainActivity : AppCompatActivity() {
             else -> error("サイズ取得エラー")
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.setting_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_menu1 -> {
+                startActivity(Intent(this, readMeActivity::class.java))
+                Log.d("ナビゲーションクリック", "説明")
+                return true
+            }
+            R.id.action_menu2 -> {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.privacy_policy)))
+                startActivity(intent)
+                Log.d("ナビゲーションクリック", "プライバシーポリシー")
+                return true
+            }
+        }
+        return true
+    }
+
 }
