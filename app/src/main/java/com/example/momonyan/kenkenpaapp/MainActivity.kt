@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_menu1 -> {
-//                startActivity(Intent(this, SettingActivity::class.java))
+                startActivity(Intent(this, readMeActivity::class.java))
                 Log.d("ナビゲーションクリック", "説明")
                 return true
             }
