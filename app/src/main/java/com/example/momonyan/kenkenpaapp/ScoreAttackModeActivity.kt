@@ -95,12 +95,12 @@ class ScoreAttackModeActivity : AppCompatActivity() {
         buttonR = findViewById(R.id.scoreButtonR)
         val point = Point()
         windowManager.defaultDisplay.getSize(point)
-        buttonL.width = (point.x / 3) - 100
-        buttonL.height = (point.x / 10) - 50
-        buttonC.width = (point.x / 3) - 100
-        buttonC.height = (point.x / 10) - 50
-        buttonR.width = (point.x / 3) - 100
-        buttonR.height = (point.x / 10) - 50
+        buttonL.width = (point.x / 3) - 90
+        buttonL.height = (point.y / 10)
+        buttonC.width = (point.x / 3) - 90
+        buttonC.height = (point.y / 10)
+        buttonR.width = (point.x / 3) - 90
+        buttonR.height = (point.y / 10)
 
 
         timeText = findViewById(R.id.timeTextView)

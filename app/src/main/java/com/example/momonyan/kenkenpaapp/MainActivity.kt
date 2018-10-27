@@ -49,11 +49,13 @@ class MainActivity : AppCompatActivity() {
         scoreAttackPlayButton = findViewById(R.id.startButton2)
         val point = Point()
         windowManager.defaultDisplay.getSize(point)
+        Log.d("Point","X:"+point.x)
+        Log.d("Point","Y:"+point.y)
         timeAttackPlayButton.width = (point.x / 2) - 100
         scoreAttackPlayButton.width = (point.x / 2) - 100
 
-        timeAttackPlayButton.height = (point.x / 10) - 100
-        scoreAttackPlayButton.height = (point.x / 10) - 100
+        timeAttackPlayButton.height = (point.y / 10)
+        scoreAttackPlayButton.height = (point.y / 10)
 
 
         highTime = findViewById(R.id.highScore_Time)
@@ -62,6 +64,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.setting_menu, menu)
+        return true
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
