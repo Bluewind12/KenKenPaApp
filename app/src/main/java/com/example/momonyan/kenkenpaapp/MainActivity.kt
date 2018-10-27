@@ -47,11 +47,13 @@ class MainActivity : AppCompatActivity() {
         //ボタン処理
         timeAttackPlayButton = findViewById(R.id.startButton1)
         scoreAttackPlayButton = findViewById(R.id.startButton2)
-        timeAttackPlayButton.width = (displaySize(0) / 2) - 100
-        scoreAttackPlayButton.width = (displaySize(0) / 2) - 100
+        val point = Point()
+        windowManager.defaultDisplay.getSize(point)
+        timeAttackPlayButton.width = (point.x / 2) - 100
+        scoreAttackPlayButton.width = (point.x / 2) - 100
 
-        timeAttackPlayButton.height = (displaySize(0) / 4) - 100
-        scoreAttackPlayButton.height = (displaySize(0) / 4) - 100
+        timeAttackPlayButton.height = (point.x / 10) - 100
+        scoreAttackPlayButton.height = (point.x / 10) - 100
 
 
         highTime = findViewById(R.id.highScore_Time)
@@ -60,28 +62,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    /**
-     * displaySize
-     * ディスプレイのサイズを返却してくれる便利なやつ
-     * @param select セレクター(0:横幅 width ,1:縦幅 height)
-     * @return 幅
-     */
-    private fun displaySize(select: Int): Int {
-        val wm = windowManager
-        val disp = wm.defaultDisplay
-        val point = Point()
-        disp.getSize(point)
-        when (select) {
-            0 -> return point.x
-            1 -> return point.y
-            else -> error("サイズ取得エラー")
-        }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.setting_menu, menu)
-        return true
-    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -99,5 +79,4 @@ class MainActivity : AppCompatActivity() {
         }
         return true
     }
-
 }

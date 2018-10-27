@@ -1,6 +1,7 @@
 package com.example.momonyan.kenkenpaapp
 
 import android.content.Intent
+import android.graphics.Point
 import android.media.SoundPool
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -64,6 +65,17 @@ class TimeAttackModeActivity : AppCompatActivity() {
         buttonL = findViewById(R.id.buttonL)
         buttonC = findViewById(R.id.buttonC)
         buttonR = findViewById(R.id.buttonR)
+        val point = Point()
+        windowManager.defaultDisplay.getSize(point)
+        windowManager.defaultDisplay.getSize(point)
+        buttonL.width = (point.x / 3) - 100
+        buttonL.height = (point.x / 10) - 50
+        buttonC.width = (point.x / 3) - 100
+        buttonC.height = (point.x / 10) - 50
+        buttonR.width = (point.x / 3) - 100
+        buttonR.height = (point.x / 10) - 50
+
+
         restNumText = findViewById(R.id.restNumText)
 
 
