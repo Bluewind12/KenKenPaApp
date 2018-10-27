@@ -215,8 +215,8 @@ class ScoreAttackModeActivity : AppCompatActivity() {
         // インターバルで呼ばれる
         override fun onTick(millisUntilFinished: Long) {
             // 残り時間を分、秒、ミリ秒に分割
-            val ss = millisUntilFinished / 1000 % 60;
-            timeText.text = String.format("%d", ss);
+            val ss = millisUntilFinished / 1000 % 60
+            timeText.text = String.format("%d", ss)
 
         }
     }
