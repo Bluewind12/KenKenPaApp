@@ -71,9 +71,13 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
             R.id.action_menu2 -> {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.privacy_policy)))
-                startActivity(intent)
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.privacy_policy))))
                 Log.d("ナビゲーションクリック", "プライバシーポリシー")
+                return true
+            }
+            R.id.action_menu3 -> {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.use_material))))
+                Log.d("ナビゲーションクリック", "利用素材など")
                 return true
             }
         }
