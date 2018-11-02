@@ -79,7 +79,7 @@ class TimeAttackModeActivity : AppCompatActivity() {
         restNumText = findViewById(R.id.restNumText)
 
 
-        numSet = 10
+        numSet = 9
         startTime = Calendar.getInstance().timeInMillis
         penaltyInt = 0
 
@@ -194,7 +194,7 @@ class TimeAttackModeActivity : AppCompatActivity() {
         buttonTextChange(buttonC, centerChoice)
         buttonTextChange(buttonR, rightChoice)
 
-        restNumText.text = getString(R.string.rest, numSet)
+        restNumText.text = getString(R.string.rest, numSet+1)
     }
 
     /**
