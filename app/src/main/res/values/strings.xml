@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">瞬発力ゲーム</string>
-    <string name="name">瞬発力</string>
+    <string name="app_name">SPEED SELECTOR</string>
+    <string name="name">SPEED\nSELECTOR</string>
     <string name="subName">～ 君の瞬発力の限界を競え ～</string>
 
     <string name="start1">タイムアタック\nスタート</string>
@@ -28,8 +28,8 @@
     <string name="menu3">使用素材など</string>
 
     <!-- URL -->
-    <string name="privacy_policy">https://scrapbox.io/Fantasy-cherry-blossoms/%EF%BC%9C%E7%9E%AC%E7%99%BA%E5%8A%9B%E3%82%B2%E3%83%BC%E3%83%A0%EF%BC%9E%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC</string>
-    <string name="use_material">https://scrapbox.io/Fantasy-cherry-blossoms/%EF%BC%9C%E7%9E%AC%E7%99%BA%E5%8A%9B%E3%82%B2%E3%83%BC%E3%83%A0%EF%BC%9E%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC</string>
+    <string name="privacy_policy">https://scrapbox.io/Fantasy-cherry-blossoms/%3CSPEED_SELECTOR%3E%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC</string>
+    <string name="use_material">https://scrapbox.io/Fantasy-cherry-blossoms/%3CSPEED_SELECTOR%3E%E4%BD%BF%E7%94%A8%E7%B4%A0%E6%9D%90</string>
 
     <!-- 説明書用 -->
     <string name="readMeTitle1">＜説明＞</string>

@@ -23,7 +23,6 @@ android {
     }
 }
 repositories {
-    // ~省略~
     maven { url "https://maven.google.com" } // <- 定義済みの場合は新たに追記不要です
     maven {
         url 'http://fan-adn.github.io/nendSDK-Android-lib/library'
