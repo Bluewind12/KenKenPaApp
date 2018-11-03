@@ -108,7 +108,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        nendsdk:NendApiKey="c5cb8bc474345961c6e7a9778c947957ed8e1e4f"
-        nendsdk:NendSpotId="3174" />
+        nendsdk:NendApiKey="11008a7125af32e7991b4184fb019ce517fa37ff"
+        nendsdk:NendSpotId="918907" />
 
 </android.support.constraint.ConstraintLayout>
