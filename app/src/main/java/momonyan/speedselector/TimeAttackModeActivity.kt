@@ -1,28 +1,23 @@
-package gensounosakurakoubou.speedselector
+package momonyan.speedselector
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Point
 import android.media.SoundPool
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.os.CountDownTimer
-import android.view.KeyEvent
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import java.util.*
 
-
-class ScoreAttackModeActivity : AppCompatActivity() {
-
-    private lateinit var timeText: TextView
-    private lateinit var scoreText: TextView
+class TimeAttackModeActivity : AppCompatActivity() {
     private lateinit var image: ImageView
-
     private lateinit var buttonL: Button
     private lateinit var buttonC: Button
     private lateinit var buttonR: Button
+
+    //残り回数表示用
+    private lateinit var restNumText: TextView
 
     //ランダムで画像選択のフラグ管理用
     private val random = Random()
@@ -30,7 +25,9 @@ class ScoreAttackModeActivity : AppCompatActivity() {
     private var randomChoiceInt: Int = 0
 
     //残り回数、管理用
-    private var pointNum: Int = 0
+    private var numSet: Int = 999
+    //開始時間
+    private var startTime: Long = 0
 
     // /効果音
     private lateinit var soundPool: SoundPool
@@ -45,29 +42,12 @@ class ScoreAttackModeActivity : AppCompatActivity() {
     //不正解回数
     private var penaltyInt: Int = 0
 
-    //カウントダウン管理用
-    private lateinit var countDown: CountDown
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.score_attack_game_layout)
-
-        //初期宣言
+        setContentView(R.layout.time_attack_game_layout)
         init()
-        gameReset()
-        //数値設定
-        choiceNumPoint()
-
-        //ボタンテキスト設定
-        buttonTextChange(buttonL, leftChoice)
-        buttonTextChange(buttonC, centerChoice)
-        buttonTextChange(buttonR, rightChoice)
-
-        val countNum: Long = 15 * 1000
-        val interval: Long = 100
-
-        countDown = CountDown(countNum, interval)
-        countDown.start()
+        resetGame()
 
         buttonL.setOnClickListener {
             correctDecision(leftChoice)
@@ -80,20 +60,13 @@ class ScoreAttackModeActivity : AppCompatActivity() {
         }
     }
 
-    //キー入力動作
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            countDown.cancel()
-        }
-        return super.onKeyDown(keyCode, event)
-    }
-
     private fun init() {
-        image = findViewById(R.id.imageView2)
-        buttonL = findViewById(R.id.scoreButtonL)
-        buttonC = findViewById(R.id.scoreButtonC)
-        buttonR = findViewById(R.id.scoreButtonR)
+        image = findViewById(R.id.imageView)
+        buttonL = findViewById(R.id.buttonL)
+        buttonC = findViewById(R.id.buttonC)
+        buttonR = findViewById(R.id.buttonR)
         val point = Point()
+        windowManager.defaultDisplay.getSize(point)
         windowManager.defaultDisplay.getSize(point)
         buttonL.width = (point.x / 3) - 90
         buttonL.height = (point.y / 10)
@@ -103,24 +76,16 @@ class ScoreAttackModeActivity : AppCompatActivity() {
         buttonR.height = (point.y / 10)
 
 
-        timeText = findViewById(R.id.timeTextView)
-        scoreText = findViewById(R.id.scoreTextView)
-        scoreText.text = getString(R.string.scoreView, 0, 0)
+        restNumText = findViewById(R.id.restNumText)
+
+
+        numSet = 9
+        startTime = Calendar.getInstance().timeInMillis
+        penaltyInt = 0
 
         soundPool = SoundPool.Builder().build()
         success = soundPool.load(this, R.raw.crrect_answer2, 1)
         beep = soundPool.load(this, R.raw.blip04, 1)
-    }
-
-    private fun gameReset() {
-        randomImageInt = random.nextInt(3)
-        randomChoiceInt = random.nextInt(6)
-        setRandomImage()
-        choiceNumPoint()
-        //ボタンテキスト設定
-        buttonTextChange(buttonL, leftChoice)
-        buttonTextChange(buttonC, centerChoice)
-        buttonTextChange(buttonR, rightChoice)
     }
 
     private fun choiceNumPoint() {
@@ -158,6 +123,12 @@ class ScoreAttackModeActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * ボタンのTextの設定
+     *  - ボタンのTextを数値に応じた文字列に変更する
+     *  @param button 変更するボタン
+     *  @param choiceNum 設定するフラグ値
+     */
     private fun buttonTextChange(button: Button, choiceNum: Int) {
         when (choiceNum) {
             0 -> button.text = getString(R.string.choice1)
@@ -168,8 +139,10 @@ class ScoreAttackModeActivity : AppCompatActivity() {
 
     //動作決定用
     private fun correctDecision(num: Int) {
-        if (num == randomImageInt) {
+        if (num == randomImageInt && 0 != numSet) {
             successFunction()
+        } else if (num == randomImageInt && 0 == numSet) {
+            endGameFunction()
         } else {
             mistakeFunction()
         }
@@ -180,45 +153,48 @@ class ScoreAttackModeActivity : AppCompatActivity() {
     private fun successFunction() {
         //効果音
         soundPool.play(success, 1.0f, 1.0f, 0, 0, 1.0f)
-
-        //動作
-        pointNum++
-        scoreText.text = getString(R.string.scoreView, pointNum, penaltyInt)
-        gameReset()
-
+        numSet--
+        resetGame()
     }
 
+    //正解時（回数終了）の動作
+    private fun endGameFunction() {
+        //効果音
+        soundPool.play(success, 1.0f, 1.0f, 0, 0, 1.0f)
+
+        //画面遷移
+        val finishIntent = Intent(this, EndActivity::class.java)
+        finishIntent.putExtra("time", startTime)
+        finishIntent.putExtra("endTime", Calendar.getInstance().timeInMillis)
+        finishIntent.putExtra("penalty", penaltyInt)
+        finishIntent.putExtra("mode", 1)
+        startActivity(finishIntent)
+        finish()
+    }
 
     //不正解時の動作
     private fun mistakeFunction() {
         //効果音
         soundPool.play(beep, 1.0f, 1.0f, 0, 0, 1.0f)
         penaltyInt++
-        scoreText.text = getString(R.string.scoreView, pointNum, penaltyInt)
     }
 
-    /**
-     * カウントダウンの動作
-     */
-    internal inner class CountDown(millisInFuture: Long, countDownInterval: Long) : CountDownTimer(millisInFuture, countDownInterval) {
+    private fun resetGame() {
+        randomImageInt = random.nextInt(3)
+        randomChoiceInt = random.nextInt(6)
 
-        override fun onFinish() {
-            // 完了
-            val intent = Intent(this@ScoreAttackModeActivity, EndActivity::class.java)
-            intent.putExtra("score", pointNum)
-            intent.putExtra("penalty", penaltyInt)
-            intent.putExtra("mode", 2)
-            startActivity(intent)
-            finish()
-        }
+        choiceNumPoint()
+        //画像セット
+        setRandomImage()
+        //数値設定
+        choiceNumPoint()
 
-        // インターバルで呼ばれる
-        override fun onTick(millisUntilFinished: Long) {
-            // 残り時間を分、秒、ミリ秒に分割
-            val ss = millisUntilFinished / 1000 % 60
-            timeText.text = String.format("%d", ss)
+        //ボタンテキスト設定
+        buttonTextChange(buttonL, leftChoice)
+        buttonTextChange(buttonC, centerChoice)
+        buttonTextChange(buttonR, rightChoice)
 
-        }
+        restNumText.text = getString(R.string.rest, numSet+1)
     }
 
     /**
@@ -226,7 +202,7 @@ class ScoreAttackModeActivity : AppCompatActivity() {
      *  - ランダムイメージ、残り回数に応じたイメージの設定
      */
     private fun setRandomImage() {
-        if (pointNum % 2 == 0) {
+        if (numSet % 2 == 0) {
             when (randomImageInt) {
                 0 -> image.setImageResource(R.drawable.fabric_mark_circle)
                 1 -> image.setImageResource(R.drawable.fabric_mark_triangle)

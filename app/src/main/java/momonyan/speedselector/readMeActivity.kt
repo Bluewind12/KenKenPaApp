@@ -1,4 +1,4 @@
-package gensounosakurakoubou.speedselector
+package momonyan.speedselector
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

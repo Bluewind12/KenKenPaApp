@@ -1,4 +1,4 @@
-package gensounosakurakoubou.speedselector
+package momonyan.speedselector
 
 import org.junit.Test
 

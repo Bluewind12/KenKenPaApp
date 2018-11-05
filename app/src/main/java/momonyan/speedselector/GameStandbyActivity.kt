@@ -1,4 +1,4 @@
-package gensounosakurakoubou.speedselector
+package momonyan.speedselector
 
 import android.content.Context
 import android.content.Intent

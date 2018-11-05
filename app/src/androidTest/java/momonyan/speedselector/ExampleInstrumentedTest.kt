@@ -1,4 +1,4 @@
-package gensounosakurakoubou.speedselector
+package momonyan.speedselector
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
