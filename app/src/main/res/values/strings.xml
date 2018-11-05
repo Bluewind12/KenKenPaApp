@@ -35,7 +35,7 @@
     <string name="readMeTitle1">＜説明＞</string>
     <string name="readMeTitle2">＜モード説明＞</string>
     <string name="readMeSubTitle1">・タイムアタックモード</string>
-    <string name="readMeSubTitle2">・スコアアタックモード</string>
+    <string name="readMeSubTitle2">・ポイントアタックモード</string>
     <string name="readMeMain1">表示される図と似た図形を選んでね！</string>
     <string name="readMeMain2">\t\t10個の問題を何秒でクリア出るかを競うモード！\n\t\t\tお手つき一回に付き＋10秒のペナルティ</string>
     <string name="readMeMain3">\t\t15秒でいくつ正解できるかを競うモード！\n\t\t\tお手つき一回に付き－1回のペナルティ</string>
