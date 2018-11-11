@@ -19,8 +19,8 @@
     <string name="modeSelect">ゲームモードを選択</string>
 
     <string name="highScore">ハイスコア</string>
-    <string name="scoreTime">タイムアタック : %.2f sec</string>
-    <string name="scorePoint">ポイントアタック : %d ポイント</string>
+    <string name="scoreTime">タイムアタック\n%.2f sec</string>
+    <string name="scorePoint">ポイントアタック\n%d ポイント</string>
 
     <!-- ナビゲーション用 -->
     <string name="menu1">説明</string>
