@@ -3,8 +3,8 @@
     <string name="name">SPEED\nSELECTOR</string>
     <string name="subName">～ 君の瞬発力の限界を競え ～</string>
 
-    <string name="start1">タイムアタック\nスタート</string>
-    <string name="start2">ポイントアタック\nスタート</string>
+    <string name="start1">タイムモード\nスタート</string>
+    <string name="start2">ポイントモード\nスタート</string>
     <string name="choice1">●</string>
     <string name="choice2">▲</string>
     <string name="choice3">×</string>
@@ -19,8 +19,8 @@
     <string name="modeSelect">ゲームモードを選択</string>
 
     <string name="highScore">ハイスコア</string>
-    <string name="scoreTime">タイムアタック\n%.2f sec</string>
-    <string name="scorePoint">ポイントアタック\n%d ポイント</string>
+    <string name="scoreTime">タイムモード\n%.2f sec</string>
+    <string name="scorePoint">ポイントモード\n%d ポイント</string>
 
     <!-- ナビゲーション用 -->
     <string name="menu1">説明</string>
@@ -34,8 +34,8 @@
     <!-- 説明書用 -->
     <string name="readMeTitle1">＜説明＞</string>
     <string name="readMeTitle2">＜モード説明＞</string>
-    <string name="readMeSubTitle1">・タイムアタックモード</string>
-    <string name="readMeSubTitle2">・ポイントアタックモード</string>
+    <string name="readMeSubTitle1">・タイムモード</string>
+    <string name="readMeSubTitle2">・ポイントモード</string>
     <string name="readMeMain1">表示される図と似た図形を選んでね！</string>
     <string name="readMeMain2">\t\t10個の問題を何秒でクリア出るかを競うモード！\n\t\t\tお手つき一回に付き＋10秒のペナルティ</string>
     <string name="readMeMain3">\t\t15秒でいくつ正解できるかを競うモード！\n\t\t\tお手つき一回に付き－1回のペナルティ</string>
