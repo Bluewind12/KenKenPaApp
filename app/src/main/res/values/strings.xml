@@ -8,7 +8,8 @@
     <string name="choice1">●</string>
     <string name="choice2">▲</string>
     <string name="choice3">×</string>
-    <string name="rest">残り%d</string>
+    <string name="restCount">残り回数</string>
+    <string name="restTime">残り時間</string>
     <string name="scoreView">正解数:%d お手つき:%d</string>
     <string name="score">%.2f 秒 + %d ペナルティ * 10</string>
     <string name="scoreResult">スコア:%.2f 秒</string>

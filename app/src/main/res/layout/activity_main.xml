@@ -16,6 +16,7 @@
         android:fontFamily="@font/line_light"
         android:text="@string/name"
         android:textAlignment="center"
+        android:textAllCaps="false"
         android:textColor="@color/colorAccent"
         android:textSize="36sp"
         android:textStyle="bold"

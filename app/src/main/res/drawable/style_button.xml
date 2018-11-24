@@ -7,7 +7,7 @@
     <solid android:color="#FFFFFF"/>
     <stroke android:color="#0077FF"
         android:width="10sp"/>
-    <padding android:left="20px" android:top="20px"
-        android:right="20px" android:bottom="20px" />
+    <padding android:left="5px" android:top="5px"
+        android:right="5px" android:bottom="5px" />
 
 </shape>
