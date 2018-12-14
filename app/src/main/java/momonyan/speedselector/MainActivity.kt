@@ -7,6 +7,7 @@ import android.graphics.Point
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -49,8 +50,8 @@ class MainActivity : AppCompatActivity() {
         scoreAttackPlayButton = findViewById(R.id.startButton2)
         val point = Point()
         windowManager.defaultDisplay.getSize(point)
-        Log.d("Point","X:"+point.x)
-        Log.d("Point","Y:"+point.y)
+        Log.d("Point", "X:" + point.x)
+        Log.d("Point", "Y:" + point.y)
         timeAttackPlayButton.width = (point.x / 2) - 100
         scoreAttackPlayButton.width = (point.x / 2) - 100
 
@@ -73,17 +74,42 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.action_menu1 -> {
                 startActivity(Intent(this, readMeActivity::class.java))
-                Log.d("ナビゲーションクリック", "説明")
                 return true
             }
             R.id.action_menu2 -> {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.privacy_policy))))
-                Log.d("ナビゲーションクリック", "プライバシーポリシー")
+                AlertDialog.Builder(this)
+                        .setTitle("Webページを開きます")
+                        .setMessage("「プライバシーポリシー」「利用素材について」のページを開いてもよろしいですか")
+                        .setPositiveButton("はい") { _, _ ->
+                            val uri = Uri.parse(getString(R.string.privacy_policy))
+                            val intent = Intent(Intent.ACTION_VIEW, uri)
+                            startActivity(intent)
+                        }
+                        .setNegativeButton("いいえ", null)
+                        .show()
                 return true
             }
             R.id.action_menu3 -> {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.use_material))))
-                Log.d("ナビゲーションクリック", "利用素材など")
+                AlertDialog.Builder(this)
+                        .setTitle("ハイスコアのリセット")
+                        .setMessage("ハイスコアをリセットしてもよろしいですか？")
+                        .setPositiveButton("はい") { _, _ ->
+                            AlertDialog.Builder(this)
+                                    .setTitle("ハイスコアのリセット")
+                                    .setMessage("本当によろしいですか？")
+                                    .setPositiveButton("大丈夫") { _, _ ->
+                                        val editor = data.edit()
+                                        editor.putFloat("scoreTimeA", 999.98f)
+                                        editor.putInt("scoreScoreA", 0)
+                                        editor.apply()
+                                        highTime.text = getString(R.string.scoreTime, data.getFloat("scoreTimeA", 999.98f))
+                                        highScore.text = getString(R.string.scorePoint, data.getInt("scoreScoreA", 0))
+                                    }
+                                    .setNegativeButton("いいえ", null)
+                                    .show()
+                        }
+                        .setNegativeButton("いいえ", null)
+                        .show()
                 return true
             }
         }

@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_menu1"
-        android:icon="@android:drawable/ic_menu_add"
+        android:icon="@drawable/setumei"
         android:orderInCategory="1"
-        android:title="@string/menu1" />
-    <item
-        android:id="@+id/action_menu2"
-        android:icon="@android:drawable/ic_menu_add"
-        android:orderInCategory="1"
-        android:title="@string/menu2" />
+        android:title="@string/menu1"
+        app:showAsAction="always" />
+
     <item
         android:id="@+id/action_menu3"
-        android:icon="@android:drawable/ic_menu_add"
+        android:icon="@drawable/gomi"
         android:orderInCategory="1"
-        android:title="@string/menu3" />
+        android:title="@string/menu3"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_menu2"
+        android:icon="@drawable/puraiba"
+        android:orderInCategory="1"
+        android:title="@string/menu2"
+        app:showAsAction="ifRoom" />
 </menu>
