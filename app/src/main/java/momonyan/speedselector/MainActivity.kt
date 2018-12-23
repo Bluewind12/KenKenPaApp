@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
             R.id.action_menu2 -> {
                 AlertDialog.Builder(this)
                         .setTitle("Webページを開きます")
-                        .setMessage("「プライバシーポリシー」「利用素材について」のページを開いてもよろしいですか")
+                        .setMessage("「プライバシーポリシー」\n「利用素材について」\nのページを開いてもよろしいですか？")
                         .setPositiveButton("はい") { _, _ ->
                             val uri = Uri.parse(getString(R.string.privacy_policy))
                             val intent = Intent(Intent.ACTION_VIEW, uri)

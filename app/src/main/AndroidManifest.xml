@@ -14,6 +14,7 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +23,7 @@
         </activity>
         <activity
             android:name=".TimeAttackModeActivity"
-            android:label="ゲーム画面(タイムアタック)"
+            android:label="ゲーム画面(タイムモード)"
             android:screenOrientation="portrait" />
         <activity
             android:name=".GameStandbyActivity"
@@ -30,7 +31,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ScoreAttackModeActivity"
-            android:label="ゲーム画面(スコアアタック)"
+            android:label="ゲーム画面(ポイントモード)"
             android:screenOrientation="portrait" />
         <activity
             android:name=".EndActivity"

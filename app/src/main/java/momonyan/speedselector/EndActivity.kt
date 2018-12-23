@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import android.widget.TextView
+import kotlinx.android.synthetic.main.end_point.*
 
 class EndActivity : AppCompatActivity() {
     private lateinit var scoreText: TextView
@@ -43,6 +44,7 @@ class EndActivity : AppCompatActivity() {
         }
         backButton.setOnClickListener {
             val endIntent = Intent(this, MainActivity::class.java)
+            endIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(endIntent)
             finish()
         }
@@ -69,17 +71,26 @@ class EndActivity : AppCompatActivity() {
     }
 
     private fun setScore() {
+        var frag = false
         if (modeInt == 1) {
             if (scorePenaltyAdd < data.getFloat("scoreTimeA", 999.98f)) {
                 editor.putFloat("scoreTimeA", scorePenaltyAdd.toFloat())
                 editor.apply()
+                frag = true
             }
         } else if (modeInt == 2) {
             if (scoreAll > data.getInt("scoreScoreA", 0)) {
                 editor.putInt("scoreScoreA", scoreAll)
                 editor.apply()
+                frag = true
             }
 
+        }
+
+        if(frag){
+            newScoreTextView.text = getString(R.string.newScore)
+        }else{
+            newScoreTextView.text = ""
         }
     }
 }

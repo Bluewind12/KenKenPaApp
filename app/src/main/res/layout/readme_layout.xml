@@ -59,39 +59,149 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/readMeSubTitle1"
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/readMeSubTitle1"
-                android:textColor="@android:color/holo_green_dark"
-                android:textSize="18sp" />
+                android:layout_height="12sp" />
 
-            <TextView
-                android:id="@+id/readMeMain2"
+            <Button
+                android:id="@+id/scoreModeReadButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/readMeMain2" />
+                android:background="@drawable/style_button"
+                android:text="@string/readMeSubTitle1" />
 
-            <TextView
-                android:id="@+id/spaceText2"
+            <LinearLayout
+                android:id="@+id/scoreModeReadList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/readMeSubTitle2"
+                <TextView
+                    android:id="@+id/scoreModeReadText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/simpleReadMe1"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_green_light"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/scoreModeReadText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/readMeMain2"
+                    android:textAlignment="center"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="12sp" />
+
+                <TextView
+                    android:id="@+id/scoreModeReadText3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/simpleReadMe2"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_green_light"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="300sp"
+                    android:adjustViewBounds="true"
+                    android:cropToPadding="true"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/scoremode_image" />
+
+                <TextView
+                    android:id="@+id/scoreModeReadText4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/scoreModeReadMe"
+                    android:textAlignment="viewStart"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="12sp" />
+
+            <Button
+                android:id="@+id/pointModeReadButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/style_button"
                 android:text="@string/readMeSubTitle2"
-                android:textColor="@android:color/holo_green_dark"
-                android:textSize="18sp" />
+                android:textAlignment="center" />
 
-            <TextView
-                android:id="@+id/readMeMain3"
+            <LinearLayout
+                android:id="@+id/pointModeReadList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/readMeMain3" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/pointModeReadText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/simpleReadMe1"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_green_light"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/pointModeReadText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/readMeMain3"
+                    android:textAlignment="center"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="12sp" />
+
+                <TextView
+                    android:id="@+id/pointModeReadText3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/simpleReadMe2"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_green_light"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="300sp"
+                    android:adjustViewBounds="true"
+                    android:cropToPadding="true"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/pointmode_image" />
+
+                <TextView
+                    android:id="@+id/pointModeReadText4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pointModeReadMe"
+                    android:textAlignment="viewStart"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="12sp" />
+
         </LinearLayout>
     </ScrollView>
 

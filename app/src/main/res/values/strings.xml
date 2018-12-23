@@ -17,6 +17,8 @@
     <string name="score2">%d 正解 - %d ペナルティ </string>
     <string name="scoreResult2">スコア:%d ポイント</string>
 
+    <string name="newScore">ハイスコア更新！</string>
+
     <string name="modeSelect">ゲームモードを選択</string>
 
     <string name="highScore">ハイスコア</string>
@@ -34,11 +36,19 @@
     <!-- 説明書用 -->
     <string name="readMeTitle1">＜説明＞</string>
     <string name="readMeTitle2">＜モード説明＞</string>
-    <string name="readMeSubTitle1">・タイムモード</string>
-    <string name="readMeSubTitle2">・ポイントモード</string>
+    <string name="readMeSubTitle1">タイムモード　▽</string>
+    <string name="readMeSubTitle2">ポイントモード　▽</string>
     <string name="readMeMain1">表示される図と似た図形を選んでね！</string>
-    <string name="readMeMain2">\t\t10個の問題を何秒でクリア出るかを競うモード！\n\t\t\tお手つき一回に付き＋10秒のペナルティ</string>
-    <string name="readMeMain3">\t\t15秒でいくつ正解できるかを競うモード！\n\t\t\tお手つき一回に付き－1回のペナルティ</string>
 
+    <string name="readMeMain2">10個の問題を何秒でクリア出るかを競うモード！\nお手つき一回に付き＋10秒のペナルティ！！</string>
+    <string name="readMeMain3">15秒でいくつ正解できるかを競うモード！\nお手つき一回に付き－1回のペナルティ！！</string>
 
+    <string name="simpleReadMe1">モードの簡単な説明！</string>
+    <string name="simpleReadMe2">ゲーム画面の説明！</string>
+
+    <!-- 画面説明用 -->
+    <string name="pointModeReadMe">①:残り時間\n②正解数と間違った回数:\n③:問題図形\n④:回答図形ボタン(3種類あるぞ！)\n\nこの場合は、●のボタンが正解！</string>
+    <string name="scoreModeReadMe">①:残り回数\n②:問題図形\n③:回答図形ボタン(3種類あるぞ！)\n\nこの場合は、×のボタンが正解！</string>
+
+    <!-- ポイントアタック用 -->
 </resources>
