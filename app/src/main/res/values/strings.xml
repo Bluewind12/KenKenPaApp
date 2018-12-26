@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SPEED SELECTOR</string>
     <string name="name">SPEED\nSELECTOR</string>
-    <string name="subName">～ 君の瞬発力の限界を競え ～</string>
+    <string name="subName">～ 瞬発力の限界を競え ～</string>
 
     <string name="start1">タイムモード\nスタート</string>
     <string name="start2">ポイントモード\nスタート</string>
@@ -29,9 +29,11 @@
     <string name="menu1">説明</string>
     <string name="menu2">プライバシーポリシー</string>
     <string name="menu3">リセット</string>
+    <string name="menu4">意見などはこちら</string>
 
     <!-- URL -->
     <string name="privacy_policy">https://www.gensounosakura.work/posts/5385817</string>
+    <string name="enquete_url">https://goo.gl/forms/5nkpgZ3ykued2lCe2</string>
 
     <!-- 説明書用 -->
     <string name="readMeTitle1">＜説明＞</string>
