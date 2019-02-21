@@ -9,6 +9,22 @@
     android:background="#FFFFFF">
 
     <TextView
+        android:id="@+id/mainTitleText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/line_light"
+        android:text="@string/name"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/backS"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/mainTitleText"
+        app:layout_constraintTop_toTopOf="@+id/mainTitleText" />
+
+    <TextView
         android:id="@+id/mainTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,7 +33,7 @@
         android:text="@string/name"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/titleColor"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
