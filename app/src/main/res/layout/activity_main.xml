@@ -146,16 +146,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/highScore_Time" />
 
-    <net.nend.android.NendAdView
-        android:id="@+id/nend"
-        android:layout_width="match_parent"
-        android:layout_height="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        nendsdk:NendApiKey="11008a7125af32e7991b4184fb019ce517fa37ff"
-        nendsdk:NendSpotId="918907" />
-
     <Button
         android:id="@+id/readMeJumpButton"
         android:layout_width="0dp"
@@ -169,5 +159,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainTitleText" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toBottomOf="@+id/nend"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/nend"
+        nendsdk:srcCompat="@drawable/gensou_logo" />
+
+    <net.nend.android.NendAdView
+        android:id="@+id/nend"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        nendsdk:NendApiKey="11008a7125af32e7991b4184fb019ce517fa37ff"
+        nendsdk:NendSpotId="918907" />
 
 </android.support.constraint.ConstraintLayout>
