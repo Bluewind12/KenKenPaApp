@@ -5,14 +5,15 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Point
 import android.net.Uri
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var timeAttackPlayButton: Button
@@ -39,6 +40,10 @@ class MainActivity : AppCompatActivity() {
         scoreAttackPlayButton.setOnClickListener {
             intent.putExtra("standby", 1)
             startActivity(intent)
+        }
+
+        readMeJumpButton.setOnClickListener {
+            startActivity(Intent(this, ReadMeActivity::class.java))
         }
 
 
@@ -73,7 +78,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_menu1 -> {
-                startActivity(Intent(this, readMeActivity::class.java))
+                startActivity(Intent(this, ReadMeActivity::class.java))
                 return true
             }
             R.id.action_menu2 -> {

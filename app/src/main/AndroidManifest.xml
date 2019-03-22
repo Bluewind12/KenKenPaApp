@@ -39,7 +39,7 @@
             android:label="おわり"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".readMeActivity"
+            android:name=".ReadMeActivity"
             android:label="説明書"
             android:screenOrientation="portrait" />
     </application>

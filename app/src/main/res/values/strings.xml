@@ -51,6 +51,7 @@
     <!-- 画面説明用 -->
     <string name="pointModeReadMe">①:残り時間\n②正解数と間違った回数:\n③:問題図形\n④:回答図形ボタン(3種類あるぞ！)\n\nこの場合は、●のボタンが正解！</string>
     <string name="scoreModeReadMe">①:残り回数\n②:問題図形\n③:回答図形ボタン(3種類あるぞ！)\n\nこの場合は、×のボタンが正解！</string>
+    <string name="readme_jump">遊び方はこちら</string>
 
     <!-- ポイントアタック用 -->
 </resources>

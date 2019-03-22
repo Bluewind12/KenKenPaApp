@@ -48,26 +48,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/style_button"
         android:text="@string/start1"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/nend"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
         android:id="@+id/startButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/style_button"
         android:text="@string/start2"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/nend"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/highScore_Time"
@@ -108,8 +108,9 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainTitleText" />
+        app:layout_constraintTop_toBottomOf="@+id/readMeJumpButton" />
 
     <View
         android:id="@+id/view"
@@ -131,6 +132,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/style_high_score"
@@ -139,9 +141,10 @@
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/startButton2"
+        app:layout_constraintBottom_toTopOf="@+id/nend"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/highScore_Time" />
 
     <net.nend.android.NendAdView
         android:id="@+id/nend"
@@ -152,5 +155,19 @@
         app:layout_constraintStart_toStartOf="parent"
         nendsdk:NendApiKey="11008a7125af32e7991b4184fb019ce517fa37ff"
         nendsdk:NendSpotId="918907" />
+
+    <Button
+        android:id="@+id/readMeJumpButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/style_button"
+        android:text="@string/readme_jump"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainTitleText" />
 
 </android.support.constraint.ConstraintLayout>
