@@ -6,8 +6,8 @@
     <corners android:radius="12sp"/>
     <solid android:color="#FFFFFF"/>
     <stroke android:color="#0077FF"
-        android:width="10sp"/>
-    <padding android:left="7sp" android:top="12sp"
-        android:right="7sp" android:bottom="12sp" />
+        android:width="7sp"/>
+    <padding android:left="12sp" android:top="5sp"
+        android:right="12sp" android:bottom="5sp" />
 
 </shape>

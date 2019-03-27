@@ -68,7 +68,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/style_button"
-                android:text="@string/readMeSubTitle1" />
+                android:text="@string/readMeSubTitle1"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/scoreModeReadList"
@@ -137,7 +139,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/style_button"
                 android:text="@string/readMeSubTitle2"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/pointModeReadList"
