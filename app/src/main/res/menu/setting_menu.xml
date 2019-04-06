@@ -16,15 +16,13 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_menu4"
-        android:icon="@drawable/enquete"
         android:orderInCategory="1"
         android:title="@string/menu4"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/action_menu2"
-        android:icon="@drawable/puraiba"
         android:orderInCategory="1"
         android:title="@string/menu2"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 </menu>
