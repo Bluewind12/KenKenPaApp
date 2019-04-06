@@ -94,11 +94,11 @@ class GameStandbyActivity : AppCompatActivity() {
         // インターバルで呼ばれる
         override fun onTick(millisUntilFinished: Long) {
             // 残り時間を分、秒、ミリ秒に分割
-            val ss = millisUntilFinished / 1000 % 60;
+            val ss = millisUntilFinished / 1000 % 60
             if(ss > 0) {
                 if (ss < ss_def) {
                     ss_def = ss
-                    textView.text = String.format("%d", ss+1)
+                    textView.text = String.format("%d", ss)
                     soundPool.play(soundShort, 1.0f, 1.0f, 0, 0, 1.0f)
                 }
             } else {
@@ -107,7 +107,7 @@ class GameStandbyActivity : AppCompatActivity() {
                     soundPool.play(soundShort, 1.0f, 1.0f, 0, 0, 1.0f)
                     textView.text = String.format("%d", ss)
                     textView.setTextColor(ContextCompat.getColor(this@GameStandbyActivity, R.color.colorAccent))
-                    textView.text = "1"
+                    textView.text = "GO"
                 }
             }
         }
