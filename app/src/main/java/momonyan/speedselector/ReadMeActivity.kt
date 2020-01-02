@@ -1,8 +1,8 @@
 package momonyan.speedselector
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.readme_layout.*
 
 class ReadMeActivity : AppCompatActivity() {

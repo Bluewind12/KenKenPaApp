@@ -5,10 +5,10 @@ import android.media.AudioAttributes
 import android.media.SoundPool
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
 import android.view.KeyEvent
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 
 
 class GameStandbyActivity : AppCompatActivity() {
