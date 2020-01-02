@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:nendsdk="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -143,7 +142,7 @@
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/nend"
+        app:layout_constraintBottom_toTopOf="@+id/adMobBanner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/highScore_Time" />
@@ -168,20 +167,20 @@
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:adjustViewBounds="true"
-        app:layout_constraintBottom_toBottomOf="@+id/nend"
+        app:layout_constraintBottom_toBottomOf="@+id/adMobBanner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/nend"
-        nendsdk:srcCompat="@drawable/gensou_logo" />
+        app:layout_constraintTop_toTopOf="@+id/adMobBanner"
+        app:srcCompat="@drawable/gensou_logo" />
 
-    <net.nend.android.NendAdView
-        android:id="@+id/nend"
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adMobBanner"
         android:layout_width="match_parent"
         android:layout_height="50sp"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-6499097800180510/4282735416"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        nendsdk:NendApiKey="11008a7125af32e7991b4184fb019ce517fa37ff"
-        nendsdk:NendSpotId="918907" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

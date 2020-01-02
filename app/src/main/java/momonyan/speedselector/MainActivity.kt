@@ -13,6 +13,9 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -25,8 +28,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        MobileAds.initialize(this)
         //初期宣言
         init()
+
+
+        val adRequest = AdRequest.Builder().build()
+        adMobBanner.loadAd(adRequest)
 
         highTime.text = getString(R.string.scoreTime, data.getFloat("scoreTimeA", 999.98f))
         highScore.text = getString(R.string.scorePoint, data.getInt("scoreScoreA", 0))
